@@ -1,14 +1,11 @@
-import express from "express";
-import multer from "multer";
+const express = require("express");
+const multer = require("multer");
 
 // import controllers
-import { 
+const { 
     getProducts, 
-    getProductById, 
     saveProduct, 
-    updateProduct,
-    deleteProduct, 
-} from "../controllers/productController.js";
+} =  require("../controllers/productController.js");
  
     // express router
 const router = express.Router();
@@ -26,15 +23,12 @@ const storage = multer.diskStorage({
 const upload = multer({storage: storage})
  
 // Route get All Products
-router.get('/', getProducts);
-// Route get single Product
-router.get('/:id', getProductById);
-// Route CREATE Product
-router.post('/', upload.single('image') , saveProduct);
-// Route UPDATE Product
-router.patch('/:id', updateProduct);
-// Route DELETE Product
-router.delete('/:id', deleteProduct);
+router.get('/', (req, res) => {
+    getProducts
+});
+router.post('/', upload.single('image') , () => {
+    saveProduct
+});
  
 // export router
-export default router;
+module.exports = router;

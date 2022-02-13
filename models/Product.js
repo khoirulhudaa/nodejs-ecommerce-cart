@@ -1,5 +1,5 @@
 // // import mongoose 
-import mongoose from "mongoose";
+const mongoose = require("mongoose");
  
 // // Buat Schema
 const Product = new mongoose.Schema({
@@ -26,24 +26,4 @@ const Product = new mongoose.Schema({
 });
  
 // // export model
-export default mongoose.model('Products', Product);
-
-
-// import mongoose from 'mongoose';
-
-// const Product = mongoose.Schema({
-//     name: {
-//         type: String,
-//         required: true
-//     },
-//     price: {
-//         type: String,
-//         required: true
-//     },
-//     category: {
-//         type: String,
-//         required: true
-//     }
-// })
-
-// export default mongoose.model('product', Product)
+module.exports = mongoose.model('Products', Product);
