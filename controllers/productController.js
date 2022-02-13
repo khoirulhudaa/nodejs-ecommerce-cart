@@ -3,11 +3,10 @@
 const Product = require("../models/Product.js");
  
 // function get All Products
-module.exports =  getProducts = async (req, res) => {
+module.exports = getProducts = (req, res) => {
     try {
-        const products = await Product.find();
+        const products = Product.find();
         res.json(products);
-        res.send(product)
     } catch (error) {
         res.status(500).json({message: error.message});
     }
