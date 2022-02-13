@@ -6,10 +6,12 @@ const route = require("./routes/index.js");
 //const cors
 const cors = require("cors");
 const bodyParser = require('body-parser');
-
+require('dotenv').config();
 // construct express function
 const app = express();
 app.use(cors())
+
+const PORT = process.env.PORT
 
 app.use(express.static('images'))
 app.use('/images', express.static('images'))
@@ -32,4 +34,4 @@ app.use(express.json());
 app.use('/product',route);
  
 // listening to port
-app.listen('4000',()=> console.log('Server Running at port: 4000'));
+app.listen(PORT,()=> console.log(`Server Running at port: ${PORT}`));
