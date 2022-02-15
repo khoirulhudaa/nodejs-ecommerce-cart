@@ -5,12 +5,19 @@ const mongoose = require("mongoose");
 const route = require("./routes/index.js");
 //const cors
 const cors = require("cors");
+//const body-parse
 const bodyParser = require('body-parser');
 require('dotenv').config();
-// construct express function
+
 const app = express();
 
-app.use(cors());
+const optionCors = {
+    origin:'*',
+    credentials:true,
+    optionSuccessStatus:200
+}
+
+app.use(cors(optionCors));
 
 app.use((req, res, next) => {
     res.setHeader("Access-Control-Allow-Origin", "*");
@@ -42,4 +49,4 @@ app.use(express.json());
 app.use('/product',route);
  
 // listening to port
-app.listen(PORT,()=> console.log(`Server Running at port: ${PORT}`));
+app.listen(PORT,() => console.log(`Server Running at port: ${PORT}`));
